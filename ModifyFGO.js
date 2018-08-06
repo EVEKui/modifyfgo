@@ -111,18 +111,18 @@ class Handlers {
             oSession["ui-hide"] = "true";
         }
         if (oSession.url.Contains("ac.php") && oSession.GetRequestBodyAsString().Contains("battlesetup")) {
-            var paidlist = [100110561033,100103726249, 100115848737, 100115041106, 100106626075, 100120828761, 100112890166, 100101825396, 100106866256, 100126719283, 100115338247, 100119185246, 100117005758, 100100202513, 100108293841, 100115047179, 100101976386, 100116710581, 100100013166, 100104721233, 100115059652];
+            var paidlist = [];
             
             var useridreg = /(?<=userid=)\d\d\d\d\d\d\d\d\d?\d?\d?\d?\d+/gi;
             var userid = oSession.url.match(useridreg);
 
-            var paid = false;
+            var paid = true;/*
             for (var i = 0; i < paidlist.length; i++) {
                 if (userid == paidlist[i]) {
                     paid = true;
                     break;
                 }
-            }
+            }*/
             if (paid) {
                 FiddlerObject.log("有权限的"+userid+"开启了一场战斗");
                 var responseStr: String = oSession.GetResponseBodyAsString();
@@ -194,7 +194,7 @@ class Handlers {
                                 sv['atk'] = Convert.ToString(12556);
                             }
 							
-                            if(userid!=100116710581){
+                            if(true){
                             	FiddlerObject.log(userid+"修改hpatk")
                                 if (typeof sv['hp'] == typeof "") {
                                     sv['hp'] = Convert.ToString((int)(Convert.ToInt32(sv['hp']) * 10));
@@ -220,7 +220,7 @@ class Handlers {
                             sv["skillLv2"] = "10";
                             sv["skillLv3"] = "10";
                             
-                            if(userid!=100116710581){
+                            if(true){
                             	sv["skillId1"] = "321550";
                             	sv["skillId2"] = "321550";
                             	sv["skillId3"] = "321550";
